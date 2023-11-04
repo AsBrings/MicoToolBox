@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MicoToolBox-Web</title>
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        .firmware-table-container {
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+        }
+    </style>
+    
+</head>
+<body>
+    <div id="content">
+        <div id="nav">
+            <p id="nav-title">MicoToolBox-Web</p>
+        </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                使用声明
+            </div>
+            <div class="panel-body" style="font-weight: 600;">
+                这是 MicoToolBox-Web 的开源版本 只走小米官方api 不走第三方服务器 二次开发请标注开源链接。
+            </div>
+        </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                二维码登录
+
+                <span style="display: none;" class="loginLabel label label-warning">登录成功 如果需要重新登录请刷新页面</span>
+            </div>
+            <div class="panel-body" style="text-align: center;">
+                <div id="qrCodeContainer" style="width: 260px; height: 260px; display: inline-block;">
+                </div>
+                <div class="panel-body" style="text-align: center;">
+                </div>
+                <button id="refreshqrbtn" class="btn btn-default" onclick="qrlogin()">刷新二维码</button>
+            </div>
+        </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                小米账号登录
+                <span style="display: none;" class="loginLabel label label-warning">登录成功 如果需要重新登录请刷新页面</span>
+            </div>
+            <div class="panel-body" style="text-align: center;">
+                <div class="input-group">
+                    <span class="input-group-addon" id="usericon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input id="userId" type="text" class="form-control" placeholder="小米账号">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon" id="pwdicon"><i class="glyphicon glyphicon-lock"></i></span>
+                    <input id="password" type="password" class="form-control" placeholder="密码">
+                </div>
+                <button id="loginBtn" class="btn btn-default" onclick="pwdlogin()">登录</button>
+            </div>
+        </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                设备列表
+                <button id="refreshDevBtn" class="btn btn-default">刷新设备列表</button>
+            </div>
+            <div class="panel-body" style="text-align: center;">
+                <table id="deviceTable" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>名称</th>
+                            <th>序列号</th>
+                            <th>型号</th>
+                            <th>版本</th>
+                            <th>状态</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="panel panel-primary">
+    <div class="panel-heading">
+        选择固件
+    </div>
+    <div class="panel-body" style="position: relative; height: 300px; overflow-y: auto;">
+        <table id="firmwareTable" class="table table-hover">
+            <thead>
+                <tr>
+                    <th>名称</th>
+                    <th>类型</th>
+                    <th>适用型号</th>
+                    <th>版本号</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>请先登录</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                推送固件
+            </div>
+            <div class="panel-body" style="text-align: center;">
+                <button id="pushBtn" type="button" class="btn btn-success">开始</button>
+                <p id="pushTips"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="tipsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="TipsModalLabel">标题</h4>
+                </div>
+                <div class="modal-body">内容</div>
+                <div class="modal-footer">
+                    <button type="button" style="display: none;" class="TipsCloseBtn btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/jquery.md5.js"></script>
+    <script src="./js/jquery.cookie.js"></script>
+    <script src="./js/bootstrap.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+</html>
